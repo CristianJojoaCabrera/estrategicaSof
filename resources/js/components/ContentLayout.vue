@@ -1,10 +1,20 @@
 <template>
-    
+    <div>
+        <personal-listing></personal-listing>
+    </div>
 </template>
 
 <script>
+    import PersonalListing from './Personal/PersonalListing.vue'
     export default {
-        name: "ContentLayout"
+        data() {
+            return {
+                collapsed: false,
+            };
+        },
+        components:{
+            PersonalListing
+        }
     }
 </script>
 
