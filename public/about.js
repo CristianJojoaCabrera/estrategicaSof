@@ -157,34 +157,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var columns = [{
   title: 'Nombres',
   width: 150,
-  dataIndex: 'name',
-  key: 'name',
+  dataIndex: 'nombres',
+  key: '1',
   fixed: 'left'
 }, {
   title: 'Apellidos',
-  dataIndex: 'age',
-  key: 'age',
+  dataIndex: 'apellidos',
+  key: '2',
   width: 150
 }, {
   title: 'Tipo Documento',
-  dataIndex: 'address',
-  key: '1',
-  width: 100
-}, {
-  title: 'Nº Documento',
-  dataIndex: 'address',
-  key: '2',
-  width: 100
-}, {
-  title: 'Telefonos',
-  dataIndex: 'address',
+  dataIndex: 'tipo_documento',
   key: '3',
   width: 100
 }, {
-  title: 'Cargo',
-  dataIndex: 'address',
+  title: 'Nº Documento',
+  dataIndex: 'numero_documento',
   key: '4',
-  width: 100
+  width: 130
+}, {
+  title: 'Telefono',
+  dataIndex: 'telefono',
+  key: '5',
+  width: 130
+}, {
+  title: 'Cargo',
+  dataIndex: 'cargo',
+  key: '6',
+  width: 110
 }, {
   title: 'Acción',
   key: 'operation',
@@ -203,15 +203,15 @@ var columns = [{
   }
 }];
 var _data = [];
-
-for (var i = 0; i < 100; i++) {
-  _data.push({
-    key: i,
-    name: "Edrward ".concat(i),
-    age: 32,
-    address: "London Park no. ".concat(i)
-  });
-}
+/*
+for (let i = 0; i < 100; i++) {
+    data.push({
+        key: i,
+        name: `Edrward ${i}`,
+        age: 32,
+        address: `London Park no. ${i}`,
+    });
+}*/
 
 
 
@@ -233,6 +233,14 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 })*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    var _this = this;
+
+    axios.get('personal').then(function (res) {
+      _this.data = res.data;
+      console.log('info', _this.data);
+    });
+  },
   data: function data() {
     return {
       data: _data,
@@ -884,8 +892,40 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['menuActual'])),
   methods: {
-    next: function next(current) {
+    guardaDatos: function guardaDatos() {
       var _this2 = this;
+
+      console.log(this.datosPersonal, 'datos a almacenar');
+      axios.post("/createPersonal", this.datosPersonal).then(function (res) {
+        console.log('retorna pagina inicio');
+
+        _this2.$notification.open({
+          message: 'Correcto',
+          description: 'Se ha registrado un nuevo integrante',
+          duration: 2
+        });
+
+        _this2.$router.push('/');
+      });
+    },
+    editarDatos: function editarDatos() {
+      var _this3 = this;
+
+      var myId = 3;
+      axios.put("/editPersona/".concat(myId), this.datosPersonal).then(function (res) {
+        console.log('retorna pagina inicio');
+
+        _this3.$notification.open({
+          message: 'Correcto',
+          description: 'Se ha editado el integrante',
+          duration: 2
+        });
+
+        _this3.$router.push('/');
+      });
+    },
+    next: function next(current) {
+      var _this4 = this;
 
       var next = false;
 
@@ -894,20 +934,20 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
           if (!err) {
             console.log('Received values of form:1 ', values);
             next = true;
-            _this2.datosPersonal = values;
-            _this2.current++;
+            _this4.datosPersonal = values;
+            _this4.current++;
           }
         });
       } else {
         this.form2.validateFields(function (err, values) {
           if (!err) {
             console.log('Received values of form:guardar los datos2 ', values);
-            Object.assign(_this2.datosPersonal, values);
+            Object.assign(_this4.datosPersonal, values);
 
-            if (_this2.idPersona == '0') {
-              _this2.guardaDatos();
+            if (_this4.idPersona == '0') {
+              _this4.guardaDatos();
             } else {
-              _this2.editarDatos(_this2.idPersona);
+              _this4.editarDatos(_this4.idPersona);
             }
           }
         });
@@ -929,38 +969,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     filterOption: function filterOption(input, option) {
       return option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-    },
-    guardaDatos: function guardaDatos() {
-      var _this3 = this;
-
-      console.log(this.datosPersonal, 'datos a almacenar');
-      axios.post("/createPersonal", this.datosPersonal).then(function (res) {
-        console.log('retorna pagina inicio');
-
-        _this3.$notification.open({
-          message: 'Correcto',
-          description: 'Se ha registrado un nuevo integrante',
-          duration: 2
-        });
-
-        _this3.$router.push('/');
-      });
-    },
-    editarDatos: function editarDatos() {
-      var _this4 = this;
-
-      var myId = 3;
-      axios.put("/editPersona/".concat(myId), this.datosPersonal).then(function (res) {
-        console.log('retorna pagina inicio');
-
-        _this4.$notification.open({
-          message: 'Correcto',
-          description: 'Se ha editado el integrante',
-          duration: 2
-        });
-
-        _this4.$router.push('/');
-      });
     },
     redirectRoute: function redirectRoute() {
       this.$router.push('/');

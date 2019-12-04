@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class PersonalController extends Controller
 {
     //
+    public function personal(){
+        $personal = Personal::all();
+        return $personal;
+    }
+
     public function store(Request $request){
         $personal = new Personal();
         $this->datosPerson($personal,$request);

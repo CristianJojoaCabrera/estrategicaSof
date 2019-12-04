@@ -105,12 +105,12 @@
 </template>
 <script>
     const columns = [
-        { title: 'Nombres', width: 150, dataIndex: 'name', key: 'name', fixed: 'left' },
-        { title: 'Apellidos', dataIndex: 'age', key: 'age',width: 150},
-        { title: 'Tipo Documento', dataIndex: 'address', key: '1',width: 100 },
-        { title: 'Nº Documento', dataIndex: 'address', key: '2', width: 100 },
-        { title: 'Telefonos', dataIndex: 'address', key: '3',width: 100 },
-        { title: 'Cargo', dataIndex: 'address', key: '4',width: 100  },
+        { title: 'Nombres', width: 150, dataIndex: 'nombres', key: '1', fixed: 'left' },
+        { title: 'Apellidos', dataIndex: 'apellidos', key: '2',width: 150},
+        { title: 'Tipo Documento', dataIndex: 'tipo_documento', key: '3',width: 100 },
+        { title: 'Nº Documento', dataIndex: 'numero_documento', key: '4', width: 130 },
+        { title: 'Telefono', dataIndex: 'telefono', key: '5',width: 130 },
+        { title: 'Cargo', dataIndex: 'cargo', key: '6',width: 110  },
         {
             title: 'Acción',
             key: 'operation',
@@ -128,6 +128,7 @@
     ];
 
     const data = [];
+    /*
     for (let i = 0; i < 100; i++) {
         data.push({
             key: i,
@@ -135,7 +136,7 @@
             age: 32,
             address: `London Park no. ${i}`,
         });
-    }
+    }*/
     import BreadCrumVue from '../tools/BreadCrumVue.vue'
     import Vuex from 'vuex'
     import  { mapState} from 'vuex'
@@ -155,6 +156,14 @@
         }
     })*/
     export default {
+        created(){
+            axios.get('personal').then(
+                res => {
+                    this.data = res.data
+                    console.log('info',this.data);
+                }
+            )
+        },
         data() {
             return {
                 data,

@@ -529,12 +529,39 @@
             BreadCrumVue
         },
         computed:{
-
             ...mapState([
                 'menuActual'
             ])
         },
         methods: {
+            guardaDatos(){
+                console.log(this.datosPersonal,'datos a almacenar');
+                axios.post(`/createPersonal`,this.datosPersonal)
+                    .then(res => {
+                        console.log('retorna pagina inicio');
+                        this.$notification.open({
+                            message: 'Correcto',
+                            description:
+                                'Se ha registrado un nuevo integrante',
+                            duration: 2,
+                        });
+                        this.$router.push('/')
+                    })
+            },
+            editarDatos(){
+                var myId = 3;
+                axios.put(`/editPersona/${myId}`,this.datosPersonal)
+                    .then(res => {
+                        console.log('retorna pagina inicio');
+                        this.$notification.open({
+                            message: 'Correcto',
+                            description:
+                                'Se ha editado el integrante',
+                            duration: 2,
+                        });
+                        this.$router.push('/')
+                    })
+            },
             next(current) {
                 let next = false
                 if(current == 0){
@@ -560,9 +587,7 @@
                         }
                     });
                 }
-
-
-console.log('validaw',current,current == 0);
+                console.log('validaw',current,current == 0);
             },
             prev() {
                 this.current--;
@@ -580,34 +605,6 @@ console.log('validaw',current,current == 0);
                 return (
                     option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 );
-            },
-            guardaDatos(){
-            console.log(this.datosPersonal,'datos a almacenar');
-               axios.post(`/createPersonal`,this.datosPersonal)
-                   .then(res => {
-                       console.log('retorna pagina inicio');
-                       this.$notification.open({
-                           message: 'Correcto',
-                           description:
-                               'Se ha registrado un nuevo integrante',
-                           duration: 2,
-                       });
-                       this.$router.push('/')
-                   })
-           },
-            editarDatos(){
-                var myId = 3;
-                axios.put(`/editPersona/${myId}`,this.datosPersonal)
-                    .then(res => {
-                        console.log('retorna pagina inicio');
-                        this.$notification.open({
-                            message: 'Correcto',
-                            description:
-                                'Se ha editado el integrante',
-                            duration: 2,
-                        });
-                        this.$router.push('/')
-                    })
             },
             redirectRoute(){
                 this.$router.push('/')

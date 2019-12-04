@@ -20,4 +20,7 @@ Auth::routes();
     Route::post('/createPersonal', 'PersonalController@store')->name('createPersonal');
     Route::get('/persona/{id}', 'PersonalController@persona')->name('get_person');
     Route::put('/editPersona/{id}', 'PersonalController@update')->name('edit_person');
+    Route::get('/persona/{id}', 'PersonalController@persona')->name('get_person');
+    Route::get('/personal', 'PersonalController@personal')->name('personal');
+
     Route::get('/home', 'HomeController@index')->name('home');
