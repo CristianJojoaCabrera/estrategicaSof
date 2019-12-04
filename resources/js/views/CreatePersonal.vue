@@ -489,14 +489,33 @@
         created(){
             if(this.idPersona != '0'){
                 console.log('algo',this.idPersona);
-                var myId = 1;
+                var myId = 3;
                 axios.get(`/persona/${myId}`).then(
                     res => {
                         console.log('res.data',res.data);
                         let data = res.data
                         this.form1.setFieldsValue({
-                            nombre:data.name,
-                            cargo:data.position
+                            cargo:1,
+                            nombre:data.nombres,
+                            apellido:data.apellidos,
+                            tipodocumento:data.tipo_documento,
+                            documento:data.numero_documento,
+                            lugar:data.lugar_documento,
+                            direccion:data.direccion,
+                            telefono:data.telefono,
+                            celular:data.celular,
+                        })
+                        this.form2.setFieldsValue({
+                            eps:data.eps,
+                            pensiones:data.pension,
+                            cesantias:data.cesantia,
+                            tipocontrato:data.tipo_contrato,
+                            contrato:data.numero_contrato,
+                            riesgo:data.riesgo,
+                            duracionText:data.duracion,
+                            salario:data.salario,
+                            comision:data.comision,
+                            ppto:data.ppto,
                         })
                     }
                 )
@@ -532,7 +551,12 @@
                         if (!err) {
                             console.log('Received values of form:guardar los datos2 ', values);
                             Object.assign(this.datosPersonal, values);
-                            this.guardaDatos()
+                            if(this.idPersona == '0'){
+                                this.guardaDatos()
+                            }else{
+                                this.editarDatos(this.idPersona)
+                            }
+
                         }
                     });
                 }
@@ -557,7 +581,7 @@ console.log('validaw',current,current == 0);
                     option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 );
             },
-           guardaDatos(){
+            guardaDatos(){
             console.log(this.datosPersonal,'datos a almacenar');
                axios.post(`/createPersonal`,this.datosPersonal)
                    .then(res => {
@@ -571,6 +595,20 @@ console.log('validaw',current,current == 0);
                        this.$router.push('/')
                    })
            },
+            editarDatos(){
+                var myId = 3;
+                axios.put(`/editPersona/${myId}`,this.datosPersonal)
+                    .then(res => {
+                        console.log('retorna pagina inicio');
+                        this.$notification.open({
+                            message: 'Correcto',
+                            description:
+                                'Se ha editado el integrante',
+                            duration: 2,
+                        });
+                        this.$router.push('/')
+                    })
+            },
             redirectRoute(){
                 this.$router.push('/')
             },

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/createPersonal', 'PersonalController@store')->name('createPersonal');
-Route::get('/persona/{id}', 'PersonalController@persona')->name('persona');
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/createPersonal', 'PersonalController@store')->name('createPersonal');
+    Route::get('/persona/{id}', 'PersonalController@persona')->name('get_person');
+    Route::put('/editPersona/{id}', 'PersonalController@update')->name('edit_person');
+    Route::get('/home', 'HomeController@index')->name('home');

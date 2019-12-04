@@ -844,14 +844,34 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 
     if (this.idPersona != '0') {
       console.log('algo', this.idPersona);
-      var myId = 1;
+      var myId = 3;
       axios.get("/persona/".concat(myId)).then(function (res) {
         console.log('res.data', res.data);
         var data = res.data;
 
         _this.form1.setFieldsValue({
-          nombre: data.name,
-          cargo: data.position
+          cargo: 1,
+          nombre: data.nombres,
+          apellido: data.apellidos,
+          tipodocumento: data.tipo_documento,
+          documento: data.numero_documento,
+          lugar: data.lugar_documento,
+          direccion: data.direccion,
+          telefono: data.telefono,
+          celular: data.celular
+        });
+
+        _this.form2.setFieldsValue({
+          eps: data.eps,
+          pensiones: data.pension,
+          cesantias: data.cesantia,
+          tipocontrato: data.tipo_contrato,
+          contrato: data.numero_contrato,
+          riesgo: data.riesgo,
+          duracionText: data.duracion,
+          salario: data.salario,
+          comision: data.comision,
+          ppto: data.ppto
         });
       });
     } else {
@@ -884,7 +904,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
             console.log('Received values of form:guardar los datos2 ', values);
             Object.assign(_this2.datosPersonal, values);
 
-            _this2.guardaDatos();
+            if (_this2.idPersona == '0') {
+              _this2.guardaDatos();
+            } else {
+              _this2.editarDatos(_this2.idPersona);
+            }
           }
         });
       }
@@ -920,6 +944,22 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
         });
 
         _this3.$router.push('/');
+      });
+    },
+    editarDatos: function editarDatos() {
+      var _this4 = this;
+
+      var myId = 3;
+      axios.put("/editPersona/".concat(myId), this.datosPersonal).then(function (res) {
+        console.log('retorna pagina inicio');
+
+        _this4.$notification.open({
+          message: 'Correcto',
+          description: 'Se ha editado el integrante',
+          duration: 2
+        });
+
+        _this4.$router.push('/');
       });
     },
     redirectRoute: function redirectRoute() {

@@ -11,6 +11,25 @@ class PersonalController extends Controller
     //
     public function store(Request $request){
         $personal = new Personal();
+        $this->datosPerson($personal,$request);
+        $personal->save();
+        return $personal;
+
+    }
+    public function update(Request $request,$personaId){
+        $user = Personal::find($personaId);
+        $this->datosPerson($user,$request);
+        $user->save();
+        return $user;
+    }
+
+    public function persona ($personaId){
+        $user = Personal::find($personaId);
+        return $user;
+    }
+
+    public function datosPerson($personal,$request)
+    {
         $personal->fecha_admision = "2019-11-11";
         $personal->nombres = $request->get('nombre');
         $personal->apellidos = $request->get('apellido');
@@ -32,18 +51,5 @@ class PersonalController extends Controller
         $personal->salario = $request->get('salario');
         $personal->comision = $request->get('comision');
         $personal->ppto = $request->get('ppto');
-        $personal->save();
-
-    }
-    public function update(Request $request){
-
-        $user = Personal::find(1);
-        dd($user);
-
-    }
-
-    public function persona ($personaId){
-        $user = Personal::find($personaId);
-        return $user;
     }
 }
