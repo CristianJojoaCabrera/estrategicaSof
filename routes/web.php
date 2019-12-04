@@ -18,4 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::post('/createPersonal', 'PersonalController@store')->name('createPersonal');
+Route::get('/persona/{id}', 'PersonalController@persona')->name('persona');
 Route::get('/home', 'HomeController@index')->name('home');

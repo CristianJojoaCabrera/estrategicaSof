@@ -88,6 +88,10 @@
                                         @blur="handleBlur"
                                         @change="handleChange"
                                         :filterOption="filterOption"
+                                        v-decorator="[
+                                          'tipodocumento',
+                                          { rules: [{ required: true, message: 'Campo obligatorio' }] },
+                                        ]"
                                 >
                                     <a-select-option value="1">C.C</a-select-option>
                                     <a-select-option value="2">C.E</a-select-option>
@@ -260,6 +264,10 @@
                                         @blur="handleBlur"
                                         @change="handleChange"
                                         :filterOption="filterOption"
+                                        v-decorator="[
+                                          'tipocontrato',
+                                          { rules: [{ required: true, message: 'Campo obligatorio' }] },
+                                        ]"
                                 >
                                     <a-select-option value="1">Termino fijo</a-select-option>
                                     <a-select-option value="2">Termino indefinido</a-select-option>
@@ -356,6 +364,18 @@
                                                 @blur="handleBlur"
                                                 @change="handleChange"
                                                 :filterOption="filterOption"
+                                                v-decorator="[
+                                                      'comision',
+                                                      {
+                                                        rules: [
+
+                                                          {
+                                                            required: true,
+                                                            message: 'Campo Obligatorio',
+                                                          },
+                                                        ],
+                                                      },
+                                            ]"
                                         >
                                             <a-select-option value="1">Si</a-select-option>
                                             <a-select-option value="2">No</a-select-option>
@@ -374,6 +394,18 @@
                                             @blur="handleBlur"
                                             @change="handleChange"
                                             :filterOption="filterOption"
+                                            v-decorator="[
+                                                      'ppto',
+                                                      {
+                                                        rules: [
+
+                                                          {
+                                                            required: true,
+                                                            message: 'Campo Obligatorio',
+                                                          },
+                                                        ],
+                                                      },
+                                            ]"
                                     >
                                         <a-select-option value="1">Si</a-select-option>
                                         <a-select-option value="2">No</a-select-option>
@@ -438,6 +470,7 @@
         data() {
             return {
                 current: 0,
+                idPersona:this.$route.params.id,
                 steps: [
                     {
                         title: 'Datos Personales',
@@ -452,6 +485,25 @@
                 form2: this.$form.createForm(this, { name: 'coordinated2' }),
                 datosPersonal:{}
             };
+        },
+        created(){
+            if(this.idPersona != '0'){
+                console.log('algo',this.idPersona);
+                var myId = 1;
+                axios.get(`/persona/${myId}`).then(
+                    res => {
+                        console.log('res.data',res.data);
+                        let data = res.data
+                        this.form1.setFieldsValue({
+                            nombre:data.name,
+                            cargo:data.position
+                        })
+                    }
+                )
+            }else{
+                console.log('algo');
+
+            }
         },
         store:store,
         components:{
@@ -510,6 +562,12 @@ console.log('validaw',current,current == 0);
                axios.post(`/createPersonal`,this.datosPersonal)
                    .then(res => {
                        console.log('retorna pagina inicio');
+                       this.$notification.open({
+                           message: 'Correcto',
+                           description:
+                               'Se ha registrado un nuevo integrante',
+                           duration: 2,
+                       });
                        this.$router.push('/')
                    })
            },

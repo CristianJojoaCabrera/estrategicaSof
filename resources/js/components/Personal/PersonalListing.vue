@@ -2,11 +2,11 @@
     <div>
         <bread-crum-vue></bread-crum-vue>
         <br /><br />
-        <a-button type="primary" icon="user-add" @click="$router.push('createPersonal')">Crear Usuario</a-button>
+        <a-button type="primary" icon="user-add" @click="$router.push({name: 'createPersonal', params: {id: 0}})">Crear Usuario</a-button>
         <br /><br />
         <a-table :columns="columns" :dataSource="data" :scroll="{ x: 750, y: 300 }">
             <slot slot="action" slot-scope="text">
-                <a-tag color="orange" @click="$router.push('createPersonal')">Editar</a-tag>
+                <a-tag color="orange" @click="edit(text)">Editar</a-tag>
                 <a-tag color="blue"  @click="showDrawer">Ver</a-tag>
             </slot>
             <slot slot="ppto" slot-scope="text">
@@ -120,7 +120,7 @@
         },
         {
             title: 'PPT Ventas',
-            key: 'operation',
+            key: 'operation2',
             fixed: 'right',
             width: 150,
             scopedSlots: { customRender: 'ppto' },
@@ -141,7 +141,8 @@
     import  { mapState} from 'vuex'
     import descriptionItem from './descriptionItem';
     Vue.use(Vuex)
-    const store = new Vuex.Store({
+   import store from '../../store/index.js'
+    /*const store = new Vuex.Store({
         state: {
             menuActual: [
                 {
@@ -152,7 +153,7 @@
         },
         mutations: {
         }
-    })
+    })*/
     export default {
         data() {
             return {
@@ -185,6 +186,7 @@
         methods:{
             edit(key){
                 console.log('sdasd',key);
+                this.$router.push({name: 'createPersonal', params: {id: 1}})
             },
             showDrawer() {
                 this.visible = true;

@@ -7,13 +7,13 @@
                     <a-menu-item key="1">
                         <a-icon type="user" />
                         <span>Personal</span>
-                        <router-link to="/">Go to Foo</router-link>
+                        <router-link to="/"></router-link>
 
                     </a-menu-item>
                     <a-menu-item key="2">
                         <a-icon type="bar-chart" />
                         <span>Ptto Ventas</span>
-                        <router-link to="/createPersonal">Go to Bar</router-link>
+                        <router-link to="/createPersonal"></router-link>
                     </a-menu-item>
                 </a-menu>
             </a-layout-sider>
