@@ -10,7 +10,7 @@ class PersonalController extends Controller
 {
     //
     public function personal(){
-        $personal = Personal::all();
+        $personal = Personal::with(['tipo_documento','tipo_contrato','tipo_cargo'])->get();
         return $personal;
     }
 
@@ -38,7 +38,7 @@ class PersonalController extends Controller
         $personal->fecha_admision = "2019-11-11";
         $personal->nombres = $request->get('nombre');
         $personal->apellidos = $request->get('apellido');
-        $personal->tipo_documento = $request->get('tipodocumento');
+        $personal->tipo_documento_id = $request->get('tipodocumento');
         $personal->numero_documento = $request->get('documento');
         $personal->lugar_documento = $request->get('lugar');
         $personal->direccion = $request->get('direccion');
@@ -47,9 +47,9 @@ class PersonalController extends Controller
         $personal->eps = $request->get('eps');
         $personal->pension = $request->get('pensiones');
         $personal->cesantias = $request->get('cesantias');
-        $personal->cargo = $request->get('cargo');
+        $personal->tipo_cargo_id = $request->get('cargo');
         $personal->riesgo = $request->get('riesgo');
-        $personal->tipo_contrato = $request->get('tipocontrato');
+        $personal->tipo_contrato_id = $request->get('tipocontrato');
         $personal->tipo_duracion = 1;
         $personal->duracion = $request->get('duracionText');
         $personal->numero_contrato = $request->get('contrato');

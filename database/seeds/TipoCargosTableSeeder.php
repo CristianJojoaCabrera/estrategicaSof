@@ -12,5 +12,9 @@ class TipoCargosTableSeeder extends Seeder
     public function run()
     {
         //
+        $data = [
+            ['nombre'=>'Ejecutivo'],
+        ];
+        \DB::table('tipo_cargos')->insert($data);
     }
 }

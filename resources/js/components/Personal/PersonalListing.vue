@@ -107,10 +107,10 @@
     const columns = [
         { title: 'Nombres', width: 150, dataIndex: 'nombres', key: '1', fixed: 'left' },
         { title: 'Apellidos', dataIndex: 'apellidos', key: '2',width: 150},
-        { title: 'Tipo Documento', dataIndex: 'tipo_documento', key: '3',width: 100 },
+        { title: 'Tipo Documento', dataIndex: 'tipo_documento.nombre', key: '3',width: 100 },
         { title: 'Nº Documento', dataIndex: 'numero_documento', key: '4', width: 130 },
         { title: 'Telefono', dataIndex: 'telefono', key: '5',width: 130 },
-        { title: 'Cargo', dataIndex: 'cargo', key: '6',width: 110  },
+        { title: 'Cargo', dataIndex: 'tipo_cargo.nombre', key: '6',width: 110},
         {
             title: 'Acción',
             key: 'operation',
@@ -187,7 +187,6 @@
             descriptionItem,
         },
         computed:{
-
             ...mapState([
                 'menuActual'
             ])

@@ -167,7 +167,7 @@ var columns = [{
   width: 150
 }, {
   title: 'Tipo Documento',
-  dataIndex: 'tipo_documento',
+  dataIndex: 'tipo_documento.nombre',
   key: '3',
   width: 100
 }, {
@@ -182,7 +182,7 @@ var columns = [{
   width: 130
 }, {
   title: 'Cargo',
-  dataIndex: 'cargo',
+  dataIndex: 'tipo_cargo.nombre',
   key: '6',
   width: 110
 }, {
@@ -872,7 +872,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
         _this.form2.setFieldsValue({
           eps: data.eps,
           pensiones: data.pension,
-          cesantias: data.cesantia,
+          cesantias: data.cesantias,
           tipocontrato: data.tipo_contrato,
           contrato: data.numero_contrato,
           riesgo: data.riesgo,

@@ -508,7 +508,7 @@
                         this.form2.setFieldsValue({
                             eps:data.eps,
                             pensiones:data.pension,
-                            cesantias:data.cesantia,
+                            cesantias:data.cesantias,
                             tipocontrato:data.tipo_contrato,
                             contrato:data.numero_contrato,
                             riesgo:data.riesgo,
