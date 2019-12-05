@@ -270,7 +270,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
       this.$router.push({
         name: 'createPersonal',
         params: {
-          id: 1
+          id: key
         }
       });
     },
@@ -852,7 +852,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 
     if (this.idPersona != '0') {
       console.log('algo', this.idPersona);
-      var myId = 3;
+      var myId = this.idPersona;
       axios.get("/persona/".concat(myId)).then(function (res) {
         console.log('res.data', res.data);
         var data = res.data;
@@ -911,7 +911,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     editarDatos: function editarDatos() {
       var _this3 = this;
 
-      var myId = 3;
+      var myId = this.idPersona;
       axios.put("/editPersona/".concat(myId), this.datosPersonal).then(function (res) {
         console.log('retorna pagina inicio');
 
@@ -1100,7 +1100,8 @@ var render = function() {
         attrs: {
           columns: _vm.columns,
           dataSource: _vm.data,
-          scroll: { x: 750, y: 300 }
+          scroll: { x: 750, y: 300 },
+          rowKey: "id"
         },
         scopedSlots: _vm._u(
           [
@@ -1114,7 +1115,7 @@ var render = function() {
                       attrs: { color: "orange" },
                       on: {
                         click: function($event) {
-                          return _vm.edit(text)
+                          return _vm.edit(text.id)
                         }
                       }
                     },

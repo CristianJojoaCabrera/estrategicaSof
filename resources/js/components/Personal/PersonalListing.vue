@@ -4,9 +4,9 @@
         <br /><br />
         <a-button type="primary" icon="user-add" @click="$router.push({name: 'createPersonal', params: {id: 0}})">Crear Usuario</a-button>
         <br /><br />
-        <a-table :columns="columns" :dataSource="data" :scroll="{ x: 750, y: 300 }">
+        <a-table :columns="columns" :dataSource="data" :scroll="{ x: 750, y: 300 }" rowKey="id" >
             <slot slot="action" slot-scope="text">
-                <a-tag color="orange" @click="edit(text)">Editar</a-tag>
+                <a-tag color="orange" @click="edit(text.id)">Editar</a-tag>
                 <a-tag color="blue"  @click="showDrawer">Ver</a-tag>
             </slot>
             <slot slot="ppto" slot-scope="text">
@@ -195,7 +195,7 @@
         methods:{
             edit(key){
                 console.log('sdasd',key);
-                this.$router.push({name: 'createPersonal', params: {id: 1}})
+                this.$router.push({name: 'createPersonal', params: {id: key}})
             },
             showDrawer() {
                 this.visible = true;

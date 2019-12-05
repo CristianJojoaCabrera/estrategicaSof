@@ -489,7 +489,7 @@
         created(){
             if(this.idPersona != '0'){
                 console.log('algo',this.idPersona);
-                var myId = 3;
+                var myId = this.idPersona;
                 axios.get(`/persona/${myId}`).then(
                     res => {
                         console.log('res.data',res.data);
@@ -549,7 +549,7 @@
                     })
             },
             editarDatos(){
-                var myId = 3;
+                var myId = this.idPersona;
                 axios.put(`/editPersona/${myId}`,this.datosPersonal)
                     .then(res => {
                         console.log('retorna pagina inicio');
