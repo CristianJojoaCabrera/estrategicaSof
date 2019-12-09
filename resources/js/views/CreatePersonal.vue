@@ -33,7 +33,7 @@
                                           { rules: [{ required: true, message: 'Campo obligatorio' }] },
                                         ]"
                                 >
-                                    <a-select-option value="1">Ejecutivo</a-select-option>
+                                    <a-select-option :value="1">Ejecutivo</a-select-option>
                                 </a-select>
                             </a-form-item>
                         </a-col>
@@ -92,10 +92,11 @@
                                           'tipodocumento',
                                           { rules: [{ required: true, message: 'Campo obligatorio' }] },
                                         ]"
+
                                 >
-                                    <a-select-option value="1">C.C</a-select-option>
-                                    <a-select-option value="2">C.E</a-select-option>
-                                    <a-select-option value="3">Nit</a-select-option>
+                                    <a-select-option :value=1>C.C</a-select-option>
+                                    <a-select-option :value=2>C.E</a-select-option>
+                                    <a-select-option :value=3>Nit</a-select-option>
                                 </a-select>
                             </a-form-item>
                         </a-col>
@@ -269,9 +270,9 @@
                                           { rules: [{ required: true, message: 'Campo obligatorio' }] },
                                         ]"
                                 >
-                                    <a-select-option value="1">Termino fijo</a-select-option>
-                                    <a-select-option value="2">Termino indefinido</a-select-option>
-                                    <a-select-option value="3">Prestanción de servicios</a-select-option>
+                                    <a-select-option :value="1">Termino fijo</a-select-option>
+                                    <a-select-option :value="2">Termino indefinido</a-select-option>
+                                    <a-select-option :value="3">Prestanción de servicios</a-select-option>
                                 </a-select>
                             </a-form-item>
                         </a-col>
@@ -377,8 +378,8 @@
                                                       },
                                             ]"
                                         >
-                                            <a-select-option value="1">Si</a-select-option>
-                                            <a-select-option value="2">No</a-select-option>
+                                            <a-select-option :value="1">Si</a-select-option>
+                                            <a-select-option :value="2">No</a-select-option>
 
                                         </a-select>
                                 </a-form-item>
@@ -407,8 +408,8 @@
                                                       },
                                             ]"
                                     >
-                                        <a-select-option value="1">Si</a-select-option>
-                                        <a-select-option value="2">No</a-select-option>
+                                        <a-select-option :value="1">Si</a-select-option>
+                                        <a-select-option :value="2">No</a-select-option>
 
                                     </a-select>
                                 </a-form-item>
@@ -495,10 +496,10 @@
                         console.log('res.data',res.data);
                         let data = res.data
                         this.form1.setFieldsValue({
-                            cargo:1,
+                            cargo:data.tipo_cargo_id,
                             nombre:data.nombres,
                             apellido:data.apellidos,
-                            tipodocumento:data.tipo_documento,
+                            tipodocumento:data.tipo_documento_id,
                             documento:data.numero_documento,
                             lugar:data.lugar_documento,
                             direccion:data.direccion,
@@ -509,7 +510,7 @@
                             eps:data.eps,
                             pensiones:data.pension,
                             cesantias:data.cesantias,
-                            tipocontrato:data.tipo_contrato,
+                            tipocontrato:data.tipo_contrato_id,
                             contrato:data.numero_contrato,
                             riesgo:data.riesgo,
                             duracionText:data.duracion,

@@ -7,7 +7,7 @@
         <a-table :columns="columns" :dataSource="data" :scroll="{ x: 750, y: 300 }" rowKey="id" >
             <slot slot="action" slot-scope="text">
                 <a-tag color="orange" @click="edit(text.id)">Editar</a-tag>
-                <a-tag color="blue"  @click="showDrawer">Ver</a-tag>
+                <a-tag color="blue"  @click="showDrawer(text.id)">Ver</a-tag>
             </slot>
             <slot slot="ppto" slot-scope="text">
                 <a-select defaultValue="1" style="width: 120px" @change="handleChange">
@@ -18,90 +18,9 @@
             </slot>
         </a-table>
         <a-drawer width="640" placement="right" :closable="false" @close="onClose" :visible="visible">
-            <p :style="[pStyle, pStyle2]">User Profile</p>
-            <p :style="pStyle">Personal</p>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="Full Name" content="Lily" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Account" content="AntDesign@example.com" />
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="City" content="HangZhou" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Country" content="China🇨🇳" />
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="Birthday" content="February 2,1900" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Website" content="-" />
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="12">
-                    <description-item
-                            title="Message"
-                            content="Make things as simple as possible but no simpler."
-                    />
-                </a-col>
-            </a-row>
-            <a-divider />
-            <p :style="pStyle">Company</p>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="Position" content="Programmer" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Responsibilities" content="Coding" />
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="Department" content="AFX" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Supervisor">
-                        <a slot="content">Lin</a>
-                    </description-item>
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="24">
-                    <description-item
-                            title="Skills"
-                            content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
-                    />
-                </a-col>
-            </a-row>
-            <a-divider />
-            <p :style="pStyle">Contacts</p>
-            <a-row>
-                <a-col :span="12">
-                    <description-item title="Email" content="ant-design-vue@example.com" />
-                </a-col>
-                <a-col :span="12">
-                    <description-item title="Phone Number" content="+86 181 0000 0000" />
-                </a-col>
-            </a-row>
-            <a-row>
-                <a-col :span="24">
-                    <description-item title="Github">
-                        <a slot="content" href="https://github.com/vueComponent/ant-design-vue">
-                            github.com/vueComponent/ant-design-vue
-                        </a>
-                    </description-item>
-                </a-col>
-            </a-row>
+            <data-personal :title="person" ></data-personal>
         </a-drawer>
     </div>
-
 </template>
 <script>
     const columns = [
@@ -126,23 +45,14 @@
             scopedSlots: { customRender: 'ppto' },
         },
     ];
-
     const data = [];
-    /*
-    for (let i = 0; i < 100; i++) {
-        data.push({
-            key: i,
-            name: `Edrward ${i}`,
-            age: 32,
-            address: `London Park no. ${i}`,
-        });
-    }*/
     import BreadCrumVue from '../tools/BreadCrumVue.vue'
     import Vuex from 'vuex'
     import  { mapState} from 'vuex'
     import descriptionItem from './descriptionItem';
     Vue.use(Vuex)
-   import store from '../../store/index.js'
+    import store from '../../store/index.js'
+    import DataPersonal from './DataPersonal.vue'
     /*const store = new Vuex.Store({
         state: {
             menuActual: [
@@ -179,12 +89,16 @@
                 pStyle2: {
                     marginBottom: '24px',
                 },
+                person:{
+                    nombres:"cristian"
+                }
             };
         },
         store:store,
         components:{
             BreadCrumVue,
             descriptionItem,
+            DataPersonal
         },
         computed:{
             ...mapState([
@@ -193,11 +107,19 @@
         },
         methods:{
             edit(key){
-                console.log('sdasd',key);
                 this.$router.push({name: 'createPersonal', params: {id: key}})
             },
-            showDrawer() {
-                this.visible = true;
+            showDrawer(id) {
+                console.log(id);
+                var myId = id;
+                axios.get(`/persona/${myId}`).then(
+                    res => {
+                        console.log('res.data',res.data);
+                         this.person = res.data
+                        this.visible = true;
+                    }
+                )
+
             },
             onClose() {
                 this.visible = false;

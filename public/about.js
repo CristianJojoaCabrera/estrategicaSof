@@ -30,6 +30,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "DataPersonal",
+  created: function created() {},
+  data: function data() {
+    return {
+      pStyle: {
+        fontSize: '16px',
+        color: 'rgba(0,0,0,0.85)',
+        lineHeight: '24px',
+        display: 'block',
+        marginBottom: '16px'
+      },
+      pStyle2: {
+        marginBottom: '24px'
+      }
+    };
+  },
+  props: ['title']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/PersonalListing.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Personal/PersonalListing.vue?vue&type=script&lang=js& ***!
@@ -43,93 +95,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _descriptionItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./descriptionItem */ "./resources/js/components/Personal/descriptionItem.vue");
 /* harmony import */ var _store_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/index.js */ "./resources/js/store/index.js");
+/* harmony import */ var _DataPersonal_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DataPersonal.vue */ "./resources/js/components/Personal/DataPersonal.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -203,21 +175,12 @@ var columns = [{
   }
 }];
 var _data = [];
-/*
-for (let i = 0; i < 100; i++) {
-    data.push({
-        key: i,
-        name: `Edrward ${i}`,
-        age: 32,
-        address: `London Park no. ${i}`,
-    });
-}*/
-
 
 
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 
 /*const store = new Vuex.Store({
     state: {
@@ -255,18 +218,21 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
       },
       pStyle2: {
         marginBottom: '24px'
+      },
+      person: {
+        nombres: "cristian"
       }
     };
   },
   store: _store_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
   components: {
     BreadCrumVue: _tools_BreadCrumVue_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    descriptionItem: _descriptionItem__WEBPACK_IMPORTED_MODULE_2__["default"]
+    descriptionItem: _descriptionItem__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DataPersonal: _DataPersonal_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['menuActual'])),
   methods: {
     edit: function edit(key) {
-      console.log('sdasd', key);
       this.$router.push({
         name: 'createPersonal',
         params: {
@@ -274,8 +240,16 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
         }
       });
     },
-    showDrawer: function showDrawer() {
-      this.visible = true;
+    showDrawer: function showDrawer(id) {
+      var _this2 = this;
+
+      console.log(id);
+      var myId = id;
+      axios.get("/persona/".concat(myId)).then(function (res) {
+        console.log('res.data', res.data);
+        _this2.person = res.data;
+        _this2.visible = true;
+      });
     },
     onClose: function onClose() {
       this.visible = false;
@@ -810,6 +784,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -858,10 +833,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
         var data = res.data;
 
         _this.form1.setFieldsValue({
-          cargo: 1,
+          cargo: data.tipo_cargo_id,
           nombre: data.nombres,
           apellido: data.apellidos,
-          tipodocumento: data.tipo_documento,
+          tipodocumento: data.tipo_documento_id,
           documento: data.numero_documento,
           lugar: data.lugar_documento,
           direccion: data.direccion,
@@ -873,7 +848,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
           eps: data.eps,
           pensiones: data.pension,
           cesantias: data.cesantias,
-          tipocontrato: data.tipo_contrato,
+          tipocontrato: data.tipo_contrato_id,
           contrato: data.numero_contrato,
           riesgo: data.riesgo,
           duracionText: data.duracion,
@@ -1054,6 +1029,82 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a-row",
+    { attrs: { type: "flex", justify: "start", gutter: 16 } },
+    [
+      _c("p", { style: [_vm.pStyle, _vm.pStyle2] }, [_vm._v("Perfil")]),
+      _vm._v(" "),
+      _c("a-col", { attrs: { span: 24 } }, [
+        _c("p", [
+          _vm._v(_vm._s(_vm.title.nombres) + " " + _vm._s(_vm.title.apellidos))
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Cargo: " + _vm._s(_vm.title.tipo_cargo.nombre))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            _vm._s(_vm.title.tipo_documento.nombre) +
+              " " +
+              _vm._s(_vm.title.numero_documento)
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(_vm._s(_vm.title.telefono) + " - " + _vm._s(_vm.title.celular))
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Tipo de contrado: " +
+              _vm._s(_vm.title.tipo_contrato.nombre) +
+              " - Nº Contrato:" +
+              _vm._s(_vm.title.numero_contrato) +
+              " Salario: $" +
+              _vm._s(_vm.title.salario)
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("a-divider"),
+      _vm._v(" "),
+      _c("p", { style: _vm.pStyle }, [_vm._v("Otros datos")]),
+      _vm._v(" "),
+      _c("a-col", { attrs: { span: 24 } }, [
+        _c("p", [_vm._v("Eps:" + _vm._s(_vm.title.eps))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Riesgo: " + _vm._s(_vm.title.riesgo))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Pensiones" + _vm._s(_vm.title.pensiones))])
+      ]),
+      _vm._v(" "),
+      _c("a-divider")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/PersonalListing.vue?vue&type=template&id=7bbcab20&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Personal/PersonalListing.vue?vue&type=template&id=7bbcab20& ***!
@@ -1124,7 +1175,14 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "a-tag",
-                    { attrs: { color: "blue" }, on: { click: _vm.showDrawer } },
+                    {
+                      attrs: { color: "blue" },
+                      on: {
+                        click: function($event) {
+                          return _vm.showDrawer(text.id)
+                        }
+                      }
+                    },
                     [_vm._v("Ver")]
                   )
                 ])
@@ -1177,273 +1235,7 @@ var render = function() {
           },
           on: { close: _vm.onClose }
         },
-        [
-          _c("p", { style: [_vm.pStyle, _vm.pStyle2] }, [
-            _vm._v("User Profile")
-          ]),
-          _vm._v(" "),
-          _c("p", { style: _vm.pStyle }, [_vm._v("Personal")]),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Full Name", content: "Lily" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: {
-                      title: "Account",
-                      content: "AntDesign@example.com"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "City", content: "HangZhou" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Country", content: "China🇨🇳" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Birthday", content: "February 2,1900" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Website", content: "-" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: {
-                      title: "Message",
-                      content:
-                        "Make things as simple as possible but no simpler."
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("a-divider"),
-          _vm._v(" "),
-          _c("p", { style: _vm.pStyle }, [_vm._v("Company")]),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Position", content: "Programmer" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Responsibilities", content: "Coding" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: { title: "Department", content: "AFX" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", { attrs: { title: "Supervisor" } }, [
-                    _c("a", { attrs: { slot: "content" }, slot: "content" }, [
-                      _vm._v("Lin")
-                    ])
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 24 } },
-                [
-                  _c("description-item", {
-                    attrs: {
-                      title: "Skills",
-                      content:
-                        "C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("a-divider"),
-          _vm._v(" "),
-          _c("p", { style: _vm.pStyle }, [_vm._v("Contacts")]),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: {
-                      title: "Email",
-                      content: "ant-design-vue@example.com"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a-col",
-                { attrs: { span: 12 } },
-                [
-                  _c("description-item", {
-                    attrs: {
-                      title: "Phone Number",
-                      content: "+86 181 0000 0000"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "a-row",
-            [
-              _c(
-                "a-col",
-                { attrs: { span: 24 } },
-                [
-                  _c("description-item", { attrs: { title: "Github" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          slot: "content",
-                          href: "https://github.com/vueComponent/ant-design-vue"
-                        },
-                        slot: "content"
-                      },
-                      [
-                        _vm._v(
-                          "\n                        github.com/vueComponent/ant-design-vue\n                    "
-                        )
-                      ]
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
+        [_c("data-personal", { attrs: { title: _vm.person } })],
         1
       )
     ],
@@ -1671,11 +1463,9 @@ var render = function() {
                                 }
                               },
                               [
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "1" } },
-                                  [_vm._v("Ejecutivo")]
-                                )
+                                _c("a-select-option", { attrs: { value: 1 } }, [
+                                  _vm._v("Ejecutivo")
+                                ])
                               ],
                               1
                             )
@@ -1816,23 +1606,17 @@ var render = function() {
                                 }
                               },
                               [
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "1" } },
-                                  [_vm._v("C.C")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 1 } }, [
+                                  _vm._v("C.C")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "2" } },
-                                  [_vm._v("C.E")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 2 } }, [
+                                  _vm._v("C.E")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "3" } },
-                                  [_vm._v("Nit")]
-                                )
+                                _c("a-select-option", { attrs: { value: 3 } }, [
+                                  _vm._v("Nit")
+                                ])
                               ],
                               1
                             )
@@ -2219,23 +2003,17 @@ var render = function() {
                                 }
                               },
                               [
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "1" } },
-                                  [_vm._v("Termino fijo")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 1 } }, [
+                                  _vm._v("Termino fijo")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "2" } },
-                                  [_vm._v("Termino indefinido")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 2 } }, [
+                                  _vm._v("Termino indefinido")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "3" } },
-                                  [_vm._v("Prestanción de servicios")]
-                                )
+                                _c("a-select-option", { attrs: { value: 3 } }, [
+                                  _vm._v("Prestanción de servicios")
+                                ])
                               ],
                               1
                             )
@@ -2468,17 +2246,13 @@ var render = function() {
                                 }
                               },
                               [
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "1" } },
-                                  [_vm._v("Si")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 1 } }, [
+                                  _vm._v("Si")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "2" } },
-                                  [_vm._v("No")]
-                                )
+                                _c("a-select-option", { attrs: { value: 2 } }, [
+                                  _vm._v("No")
+                                ])
                               ],
                               1
                             )
@@ -2533,17 +2307,13 @@ var render = function() {
                                 }
                               },
                               [
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "1" } },
-                                  [_vm._v("Si")]
-                                ),
+                                _c("a-select-option", { attrs: { value: 1 } }, [
+                                  _vm._v("Si")
+                                ]),
                                 _vm._v(" "),
-                                _c(
-                                  "a-select-option",
-                                  { attrs: { value: "2" } },
-                                  [_vm._v("No")]
-                                )
+                                _c("a-select-option", { attrs: { value: 2 } }, [
+                                  _vm._v("No")
+                                ])
                               ],
                               1
                             )
@@ -2714,6 +2484,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContentLayout_vue_vue_type_template_id_5037ff28_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContentLayout_vue_vue_type_template_id_5037ff28_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Personal/DataPersonal.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Personal/DataPersonal.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true& */ "./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true&");
+/* harmony import */ var _DataPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataPersonal.vue?vue&type=script&lang=js& */ "./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DataPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "abbdfc84",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Personal/DataPersonal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DataPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DataPersonal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/DataPersonal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DataPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Personal/DataPersonal.vue?vue&type=template&id=abbdfc84&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DataPersonal_vue_vue_type_template_id_abbdfc84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

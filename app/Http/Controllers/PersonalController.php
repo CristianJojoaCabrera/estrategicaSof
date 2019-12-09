@@ -11,6 +11,7 @@ class PersonalController extends Controller
     //
     public function personal(){
         $personal = Personal::with(['tipo_documento','tipo_contrato','tipo_cargo'])->get();
+        //dd($personal);
         return $personal;
     }
 
@@ -29,7 +30,7 @@ class PersonalController extends Controller
     }
 
     public function persona ($personaId){
-        $user = Personal::find($personaId);
+        $user = Personal::with(['tipo_documento','tipo_contrato','tipo_cargo'])->where('id',$personaId)->first();
         return $user;
     }
 
