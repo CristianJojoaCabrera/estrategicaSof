@@ -15,6 +15,12 @@ class CreateClientesPotencialesTable extends Migration
     {
         Schema::create('clientes_potenciales', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('ciudad');
+            $table->string('razon_social');
+            $table->string('nit');
+            $table->string('direccion');
+            $table->string('pagina_web');
+            $table->string('tipo_sociedad');
             $table->timestamps();
         });
     }

@@ -182,19 +182,6 @@ var _data = [];
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
-/*const store = new Vuex.Store({
-    state: {
-        menuActual: [
-            {
-                nombre:'Personal',
-                icon:'user'
-            }
-        ]
-    },
-    mutations: {
-    }
-})*/
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -950,6 +937,245 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     onChange: function onChange(date, dateString) {
       console.log(date, dateString);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_tools_BreadCrumVue_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/tools/BreadCrumVue.vue */ "./resources/js/components/tools/BreadCrumVue.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var columns = [{
+  title: 'Ciudad',
+  width: 150,
+  dataIndex: 'ciudad',
+  key: '1',
+  fixed: 'left'
+}, {
+  title: 'Razon Social',
+  dataIndex: 'razon_social',
+  key: '2',
+  width: 150
+}, {
+  title: 'NIT',
+  dataIndex: 'nit',
+  key: '3',
+  width: 110
+}, {
+  title: 'Dirección',
+  dataIndex: 'direccion',
+  key: '4',
+  width: 140
+}, {
+  title: 'Pagina Web',
+  dataIndex: 'pagina_web',
+  key: '5',
+  width: 140
+}, {
+  title: 'Tipo Sociedad',
+  dataIndex: 'tipo_sociedad',
+  key: '6',
+  width: 120
+}, {
+  title: 'Acción',
+  key: 'operation',
+  fixed: 'right',
+  width: 150,
+  scopedSlots: {
+    customRender: 'action'
+  }
+}];
+var _data = [];
+
+
+
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {
+    menuActual: [{
+      nombre: 'Clientes Potenciales',
+      icon: 'user'
+    }]
+  },
+  mutations: {}
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: _data,
+      columns: columns,
+      form: this.$form.createForm(this),
+      visible: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('potentialCustomers').then(function (res) {
+      _this.data = res.data;
+      console.log('info', _this.data);
+    });
+  },
+  store: store,
+  components: {
+    BreadCrumVue: _components_tools_BreadCrumVue_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['menuActual'])),
+  methods: {
+    showDrawer: function showDrawer(id) {
+      console.log(id);
+      this.visible = true;
+    },
+    onClose: function onClose() {
+      this.visible = false;
     }
   }
 });
@@ -2420,6 +2646,495 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("bread-crum-vue"),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("a-button", { attrs: { type: "primary", icon: "user-add" } }, [
+        _vm._v("Cliente Potencial")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("a-table", {
+        attrs: {
+          columns: _vm.columns,
+          dataSource: _vm.data,
+          scroll: { x: 750, y: 300 },
+          rowKey: "id"
+        },
+        scopedSlots: _vm._u(
+          [
+            {
+              key: "action",
+              fn: function(text) {
+                return _vm._t("default", [
+                  _c(
+                    "a-tag",
+                    {
+                      attrs: { color: "orange" },
+                      on: {
+                        click: function($event) {
+                          return _vm.showDrawer(text.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Agregar Contacto")]
+                  )
+                ])
+              }
+            }
+          ],
+          null,
+          true
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "a-drawer",
+        {
+          attrs: {
+            title: "Create a new account",
+            width: 720,
+            visible: _vm.visible,
+            wrapStyle: {
+              height: "calc(100% - 108px)",
+              overflow: "auto",
+              paddingBottom: "108px"
+            }
+          },
+          on: { close: _vm.onClose }
+        },
+        [
+          _c(
+            "a-form",
+            {
+              attrs: {
+                form: _vm.form,
+                layout: "vertical",
+                hideRequiredMark: ""
+              }
+            },
+            [
+              _c(
+                "a-row",
+                { attrs: { gutter: 16 } },
+                [
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Name" } },
+                        [
+                          _c("a-input", {
+                            directives: [
+                              {
+                                name: "decorator",
+                                rawName: "v-decorator",
+                                value: [
+                                  "name",
+                                  {
+                                    rules: [
+                                      {
+                                        required: true,
+                                        message: "Please enter user name"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                expression:
+                                  "['name', {\n              rules: [{ required: true, message: 'Please enter user name' }]\n            }]"
+                              }
+                            ],
+                            attrs: { placeholder: "Please enter user name" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Url" } },
+                        [
+                          _c("a-input", {
+                            directives: [
+                              {
+                                name: "decorator",
+                                rawName: "v-decorator",
+                                value: [
+                                  "url",
+                                  {
+                                    rules: [
+                                      {
+                                        required: true,
+                                        message: "please enter url"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                expression:
+                                  "['url', {\n              rules: [{ required: true, message: 'please enter url' }]\n            }]"
+                              }
+                            ],
+                            staticStyle: { width: "100%" },
+                            attrs: {
+                              addonBefore: "http://",
+                              addonAfter: ".com",
+                              placeholder: "please enter url"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "a-row",
+                { attrs: { gutter: 16 } },
+                [
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Owner" } },
+                        [
+                          _c(
+                            "a-select",
+                            {
+                              directives: [
+                                {
+                                  name: "decorator",
+                                  rawName: "v-decorator",
+                                  value: [
+                                    "owner",
+                                    {
+                                      rules: [
+                                        {
+                                          required: true,
+                                          message: "Please select an owner"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  expression:
+                                    "['owner', {\n              rules: [{ required: true, message: 'Please select an owner' }]\n            }]"
+                                }
+                              ],
+                              attrs: { placeholder: "Please a-s an owner" }
+                            },
+                            [
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "xiao" } },
+                                [_vm._v("Xiaoxiao Fu")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "mao" } },
+                                [_vm._v("Maomao Zhou")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Type" } },
+                        [
+                          _c(
+                            "a-select",
+                            {
+                              directives: [
+                                {
+                                  name: "decorator",
+                                  rawName: "v-decorator",
+                                  value: [
+                                    "type",
+                                    {
+                                      rules: [
+                                        {
+                                          required: true,
+                                          message: "Please choose the type"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  expression:
+                                    "['type', {\n              rules: [{ required: true, message: 'Please choose the type' }]\n            }]"
+                                }
+                              ],
+                              attrs: { placeholder: "Please choose the type" }
+                            },
+                            [
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "private" } },
+                                [_vm._v("Private")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "public" } },
+                                [_vm._v("Public")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "a-row",
+                { attrs: { gutter: 16 } },
+                [
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Approver" } },
+                        [
+                          _c(
+                            "a-select",
+                            {
+                              directives: [
+                                {
+                                  name: "decorator",
+                                  rawName: "v-decorator",
+                                  value: [
+                                    "approver",
+                                    {
+                                      rules: [
+                                        {
+                                          required: true,
+                                          message: "Please choose the approver"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  expression:
+                                    "['approver', {\n              rules: [{ required: true, message: 'Please choose the approver' }]\n            }]"
+                                }
+                              ],
+                              attrs: {
+                                placeholder: "Please choose the approver"
+                              }
+                            },
+                            [
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "jack" } },
+                                [_vm._v("Jack Ma")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a-select-option",
+                                { attrs: { value: "tom" } },
+                                [_vm._v("Tom Liu")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a-col",
+                    { attrs: { span: 12 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "DateTime" } },
+                        [
+                          _c("a-date-picker", {
+                            directives: [
+                              {
+                                name: "decorator",
+                                rawName: "v-decorator",
+                                value: [
+                                  "dateTime",
+                                  {
+                                    rules: [
+                                      {
+                                        required: true,
+                                        message: "Please choose the dateTime"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                expression:
+                                  "['dateTime', {\n              rules: [{ required: true, message: 'Please choose the dateTime' }]\n            }]"
+                              }
+                            ],
+                            staticStyle: { width: "100%" },
+                            attrs: {
+                              getPopupContainer: function(trigger) {
+                                return trigger.parentNode
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "a-row",
+                { attrs: { gutter: 16 } },
+                [
+                  _c(
+                    "a-col",
+                    { attrs: { span: 24 } },
+                    [
+                      _c(
+                        "a-form-item",
+                        { attrs: { label: "Description" } },
+                        [
+                          _c("a-textarea", {
+                            directives: [
+                              {
+                                name: "decorator",
+                                rawName: "v-decorator",
+                                value: [
+                                  "description",
+                                  {
+                                    rules: [
+                                      {
+                                        required: true,
+                                        message: "Please enter url description"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                expression:
+                                  "['description', {\n              rules: [{ required: true, message: 'Please enter url description' }]\n            }]"
+                              }
+                            ],
+                            attrs: {
+                              rows: 4,
+                              placeholder: "please enter url description"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              style: {
+                position: "absolute",
+                left: 0,
+                bottom: 0,
+                width: "100%",
+                borderTop: "1px solid #e9e9e9",
+                padding: "10px 16px",
+                background: "#fff",
+                textAlign: "right"
+              }
+            },
+            [
+              _c(
+                "a-button",
+                { style: { marginRight: "8px" }, on: { click: _vm.onClose } },
+                [_vm._v("\n                Cancel\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a-button",
+                { attrs: { type: "primary" }, on: { click: _vm.onClose } },
+                [_vm._v("Submit")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ContentLayout.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/ContentLayout.vue ***!
@@ -2847,6 +3562,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreatePersonal_vue_vue_type_template_id_a45e378a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreatePersonal_vue_vue_type_template_id_a45e378a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/PotentialCustomers.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/views/PotentialCustomers.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true& */ "./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true&");
+/* harmony import */ var _PotentialCustomers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PotentialCustomers.vue?vue&type=script&lang=js& */ "./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PotentialCustomers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "067861b6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/PotentialCustomers.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PotentialCustomers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PotentialCustomers.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PotentialCustomers.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PotentialCustomers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PotentialCustomers.vue?vue&type=template&id=067861b6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PotentialCustomers_vue_vue_type_template_id_067861b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

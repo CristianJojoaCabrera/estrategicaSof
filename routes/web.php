@@ -24,4 +24,6 @@ Auth::routes();
     Route::get('/persona/{id}', 'PersonalController@persona')->name('get_person');
     Route::get('/personal', 'PersonalController@personal')->name('personal');
 
+    Route::get('/potentialCustomers', 'ClientesPotencialesController@clientes_potenciales')->name('clientes_potenciales');
+
     Route::get('/{any}', 'HomeController@index')->where('any', '.*')->name('home');

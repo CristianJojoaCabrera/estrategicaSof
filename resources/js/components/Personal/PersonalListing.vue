@@ -53,18 +53,6 @@
     Vue.use(Vuex)
     import store from '../../store/index.js'
     import DataPersonal from './DataPersonal.vue'
-    /*const store = new Vuex.Store({
-        state: {
-            menuActual: [
-                {
-                    nombre:'Personal',
-                    icon:'user'
-                }
-            ]
-        },
-        mutations: {
-        }
-    })*/
     export default {
         created(){
             axios.get('personal').then(

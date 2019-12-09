@@ -8,12 +8,15 @@
                         <a-icon type="user" />
                         <span>Personal</span>
                         <router-link to="/"></router-link>
-
                     </a-menu-item>
                     <a-menu-item key="2">
+                        <a-icon type="usergroup-add" />
+                        <span>Clientes Potenciales</span>
+                        <router-link to="/potentialCustomers"></router-link>
+                    </a-menu-item>
+                    <a-menu-item key="3">
                         <a-icon type="bar-chart" />
                         <span>Ptto Ventas</span>
-                        <router-link to="/createPersonal"></router-link>
                     </a-menu-item>
                 </a-menu>
             </a-layout-sider>

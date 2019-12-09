@@ -26,6 +26,12 @@ export default new VueRouter({
             name:'editPersonal',
             component: () => import(/* webpackChunkName: "about" */ './views/CreatePersonal.vue')
 
-        }
+        },
+        {
+            path: '/potentialCustomers',
+            name:'potentialCustomers',
+            component: () => import(/* webpackChunkName: "about" */ './views/PotentialCustomers.vue')
+
+        },
     ]
 })
